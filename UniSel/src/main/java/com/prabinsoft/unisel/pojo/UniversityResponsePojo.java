@@ -11,7 +11,7 @@ public class UniversityResponsePojo {
 	private Integer id;
 	private String name;
 	private String address;
-	private Double tutionFee;
+	private Double tuitionFee;
 	private Integer ranking;
 	private LocalDate deadline;
 	private Double costOfAttendance;
@@ -19,5 +19,6 @@ public class UniversityResponsePojo {
 	private Double minGPA;
 	private Double minIelts;
 	private String weather;
+	private Double acceptanceRate;
 
 }
