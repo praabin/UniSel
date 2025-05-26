@@ -1,15 +1,16 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/uniselnew
-    username: postgres
-    password: prabin
-    driver-class-name: org.postgresql.Driver
+    url: jdbc:mysql://localhost:3306/xyz
+    username: root  
+    password: PrabinMysql
+    driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     show-sql: true
     hibernate:
       ddl-auto: update
     properties:
       hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
         jdbc:
           lob:
             non_contextual_creation: true
