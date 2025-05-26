@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import com.prabinsoft.unisel.generic.AuditActiveAbstract;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,21 +21,29 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name="tbl_university")
+@Table(name = "tbl_university")
 public class University extends AuditActiveAbstract {
-	
+
 	@Id
-	@SequenceGenerator(name ="university_seq_name", sequenceName= "author_seq", allocationSize = 1)
+	@SequenceGenerator(name = "university_seq_name", sequenceName = "university_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "university_seq_name")
 	private Integer id;
+	@Column(nullable = false, length = 100, unique = true)
 	private String name;
+	@Column(length = 200)
 	private String address;
-	private Double tutionFee;
+	@Column(name = "tuition_fee")
+	private Double tuitionFee;
 	private Integer ranking;
 	private LocalDate deadline;
+	@Column(name = "cost_of_attendance")
 	private Double costOfAttendance;
 	private Boolean scholarshipAvailable;
+	@Column(name = "min_gpa")
 	private Double minGPA;
+	@Column(name = "min_ielts")
 	private Double minIelts;
 	private String weather;
+	@Column(name = "acceptance_rate")
+	private Double acceptanceRate;
 }
