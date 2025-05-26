@@ -10,6 +10,7 @@ import com.prabinsoft.unisel.config.CustomMessageSource;
 import com.prabinsoft.unisel.constants.ModuleNameConstants;
 import com.prabinsoft.unisel.customexception.AppException;
 import com.prabinsoft.unisel.enums.Message;
+import com.prabinsoft.unisel.mapper.UniversityMapper;
 import com.prabinsoft.unisel.model.University;
 import com.prabinsoft.unisel.pojo.UniversityRequestPojo;
 import com.prabinsoft.unisel.pojo.UniversityResponsePojo;
@@ -25,7 +26,7 @@ public class UniversitySeriviceImpl implements UniversityService {
 	private final UniversityRepository universityRepository;
 	private final NullAwareBeanUtilsBean nullAwareBeanUtilsBean = new NullAwareBeanUtilsBean();
 	private final CustomMessageSource customMessageSource;
-
+	private final UniversityMapper universityMapper;
 	@Override
 	public void createUpdateUniversity(UniversityRequestPojo uniRequestPojo) {
 		University university;
@@ -51,26 +52,24 @@ public class UniversitySeriviceImpl implements UniversityService {
 
 	@Override
 	public UniversityResponsePojo getUniversityById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		return universityMapper.getUniversityById(id)
+				.orElseThrow(() -> new AppException(customMessageSource.get(Message.ID_NOT_FOUND.getCode(), ModuleNameConstants.UNIVERSITY)));
 	}
 
 	@Override
 	public UniversityResponsePojo getUniversityByName(String name) {
-		// TODO Auto-generated method stub
+	
 		return null;
 	}
 
 	@Override
-	public List<UniversityResponsePojo> getAllUniversity() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<UniversityResponsePojo> getAllUniversity() {		
+		return universityMapper.getAllUniversity();
 	}
 
 	@Override
-	public void deleteById(Integer id) {
-		// TODO Auto-generated method stub
-
+	public void deleteUniversityById(Integer id) {
+		universityRepository.deleteById(id);
 	}
 
 }

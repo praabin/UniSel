@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter
-@Setter
 public class UniversityResponsePojo {
 	private Integer id;
 	private String name;

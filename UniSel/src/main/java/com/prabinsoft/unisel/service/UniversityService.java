@@ -11,6 +11,6 @@ public interface UniversityService {
 	UniversityResponsePojo getUniversityById(Integer id);
 	UniversityResponsePojo getUniversityByName(String name);
 	List<UniversityResponsePojo> getAllUniversity();
-	void deleteById(Integer id);
+	void deleteUniversityById(Integer id);
 
 }
