@@ -11,9 +11,11 @@ import com.prabinsoft.unisel.generic.GlobalApiResponse;
 public class BaseController {
 
 	@Autowired
-	public CustomMessageSource customMessageSource;
+	protected CustomMessageSource customMessageSource;
 	private static final ResponseStatus API_SUCCESS_STATUS = ResponseStatus.SUCCESS;
 	private static final ResponseStatus API_FAIL_STATUS = ResponseStatus.FAIL;
+	protected String module;
+	
 	
 	public GlobalApiResponse successResponse(String message, Object data) {
 		GlobalApiResponse globalApiResponse = new GlobalApiResponse();
