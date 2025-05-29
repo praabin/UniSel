@@ -12,10 +12,8 @@ public enum Message {
 	ID_NOT_FOUND("id.not.found"),
 	CRUD_GET_SINGLE("crud.get.single"),
 	CRUD_GET_ALL("crud.get_all"),
-	DELETE("success.delete")
-	;
-	
-	
+	DELETE("success.delete");
+		
 	public String code;
 
 }
