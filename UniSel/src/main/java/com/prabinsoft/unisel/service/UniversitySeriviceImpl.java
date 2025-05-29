@@ -58,8 +58,8 @@ public class UniversitySeriviceImpl implements UniversityService {
 
 	@Override
 	public UniversityResponsePojo getUniversityByName(String name) {
-	
-		return null;
+		return universityMapper.getUniversityByName(name).orElseThrow(
+				()-> new AppException(customMessageSource.get(Message.ID_NOT_FOUND.getCode(), ModuleNameConstants.UNIVERSITY)));
 	}
 
 	@Override

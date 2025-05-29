@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.prabinsoft.unisel.constants.ModuleNameConstants;
@@ -29,13 +30,11 @@ import jakarta.validation.Valid;
 @Tag(name=ModuleNameConstants.UNIVERSITY)
 public class UniversityController extends BaseController {
 
-//    private final UniversityRepository universityRepository;
 	private final UniversityService universityService;
 
 	public UniversityController(UniversityService universityService, UniversityRepository universityRepository) {
 		this.universityService = universityService;
 		this.module = ModuleNameConstants.UNIVERSITY;
-//		this.universityRepository = universityRepository;
 		
 	}
 		
@@ -55,6 +54,13 @@ public class UniversityController extends BaseController {
 	public ResponseEntity<GlobalApiResponse> getUniversityById(@PathVariable Integer id){
 		return ResponseEntity.ok(successResponse(customMessageSource.get(Message.CRUD_GET_SINGLE.getCode(), module),universityService.getUniversityById(id)));
 	}
+	
+	@GetMapping("/name/{name}")
+	public ResponseEntity<GlobalApiResponse> getUniversityByNam(@PathVariable String name){
+		return ResponseEntity.ok(successResponse(customMessageSource.get(Message.CRUD_GET_SINGLE.getCode(), module),
+				universityService.getUniversityByName(name)));
+	}
+	
 	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<GlobalApiResponse> deleteUniversityById(@PathVariable Integer id){
